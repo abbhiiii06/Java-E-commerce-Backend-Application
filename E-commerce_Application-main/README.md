@@ -3,11 +3,6 @@
 ## Introduction
 Our E-commerce Backend Project is a state-of-the-art web application, providing an exceptional online shopping experience. With a focus on security, we use JWT tokens to ensure that our platform is fully protected and only authorized users can access it. Powered by Java, Spring Boot, and MySQL, our backend employs the DAO (Data Access Object) pattern, guaranteeing efficient data management and organization.
 
-## Deplolyed App
-Not Deployee
-
-## Video Walkthrough of the project
-
 ## Key components of the project:
 
 - Java: The programming language used to write the backend code, providing the necessary logic and algorithms to power the e-commerce platform.
