@@ -8,20 +8,6 @@ Our E-commerce Backend Project is a state-of-the-art web application, providing 
 
 Powered by Java, Spring Boot, and MySQL, our backend employs the DAO (Data Access Object) pattern, guaranteeing efficient data management and organization.
 
----
-
-# Deployed App
-
-Not Deployed
-
----
-
-# Video Walkthrough of the project
-
-Add your video link here
-
----
-
 # Key components of the project:
 
 - **Java:** The programming language used to write the backend code, providing the necessary logic and algorithms to power the e-commerce platform.
