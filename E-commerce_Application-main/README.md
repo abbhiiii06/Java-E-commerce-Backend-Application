@@ -33,14 +33,12 @@ Not Deployee
 - Security: The project implements security measures to protect sensitive data, prevent unauthorized access, and defend against common web vulnerabilities.
 
 
-
-## How to Run:-
-```bash
-git clone https://github.com/Dhirajrrajput123/E-commerce_Application.git 
-```
-- Open folder in requested IDE like-STS, Eclipse, IntelliJ IDEA ...
-- Run the application
-
+## Team members 
+- Murly
+- Sai
+- Abhishek
+- Vivek
+- Akhilesh
 ## API End Points:-
 
 
