@@ -46,7 +46,7 @@ The e-commerce website backend is the backbone of the online store, responsible 
 - Sai
 - Abhishek
 - Akhilesh
-- Vivek
+- Dhiraj
 
 ---
 
