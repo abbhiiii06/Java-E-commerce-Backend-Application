@@ -56,3 +56,253 @@ The e-commerce website backend is the backbone of the online store, responsible 
 - Spring Boot
 - MySQL
 - Security with JWT (JSON Web Tokens)
+  # 🚀 Deploying the Java E-Commerce Backend Application
+
+## Prerequisites
+
+Before deployment, make sure you have:
+
+* Java 17+
+* Maven 3.8+
+* MySQL 8+
+* Git
+* GitHub account
+* Render account (recommended)
+
+---
+
+## Local Setup
+
+### Clone Repository
+
+```bash
+git clone https://github.com/abbhiiii06/Java-E-commerce-Backend-Application.git
+cd Java-E-commerce-Backend-Application
+```
+
+### Create Database
+
+Open MySQL:
+
+```sql
+CREATE DATABASE E_commerce;
+```
+
+### Configure Database
+
+Current database configuration:
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/E_commerce
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.username=root
+spring.datasource.password=root
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
+
+### Build Project
+
+```bash
+mvn clean package
+```
+
+### Run Project
+
+```bash
+mvn spring-boot:run
+```
+
+Or:
+
+```bash
+java -jar target/*.jar
+```
+
+Application will start on:
+
+```
+http://localhost:8080
+```
+
+---
+
+# 🌐 Deploy on Render
+
+## Step 1: Push Code to GitHub
+
+```bash
+git add .
+git commit -m "Deployment setup"
+git push origin main
+```
+
+## Step 2: Create Cloud MySQL Database
+
+Use one of:
+
+* Railway MySQL
+* Aiven MySQL
+* AWS RDS MySQL
+
+Copy:
+
+* Host
+* Port
+* Database Name
+* Username
+* Password
+
+---
+
+## Step 3: Update application.properties
+
+Replace:
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/E_commerce
+spring.datasource.username=root
+spring.datasource.password=root
+```
+
+with:
+
+```properties
+spring.datasource.url=${SPRING_DATASOURCE_URL}
+spring.datasource.username=${SPRING_DATASOURCE_USERNAME}
+spring.datasource.password=${SPRING_DATASOURCE_PASSWORD}
+
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=false
+```
+
+Commit and push changes.
+
+---
+
+## Step 4: Create Render Web Service
+
+1. Sign in to Render.
+2. Click **New +**
+3. Select **Web Service**
+4. Connect GitHub repository.
+5. Select **Java-E-commerce-Backend-Application**
+
+---
+
+## Step 5: Configure Build Settings
+
+### Build Command
+
+```bash
+mvn clean package
+```
+
+### Start Command
+
+```bash
+java -jar target/*.jar
+```
+
+---
+
+## Step 6: Add Environment Variables
+
+In Render Dashboard → Environment:
+
+```env
+SPRING_DATASOURCE_URL=jdbc:mysql://YOUR_HOST:3306/E_commerce
+SPRING_DATASOURCE_USERNAME=YOUR_USERNAME
+SPRING_DATASOURCE_PASSWORD=YOUR_PASSWORD
+```
+
+Example:
+
+```env
+SPRING_DATASOURCE_URL=jdbc:mysql://mysql.railway.internal:3306/E_commerce
+SPRING_DATASOURCE_USERNAME=admin
+SPRING_DATASOURCE_PASSWORD=StrongPassword123
+```
+
+---
+
+## Step 7: Deploy
+
+Click **Deploy Web Service**.
+
+Render will generate a public URL:
+
+```
+https://your-app.onrender.com
+```
+
+---
+
+# Docker Deployment (Optional)
+
+Create `Dockerfile`:
+
+```dockerfile
+FROM eclipse-temurin:17-jdk
+
+COPY target/*.jar app.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java","-jar","/app.jar"]
+```
+
+Build:
+
+```bash
+docker build -t ecommerce-backend .
+```
+
+Run:
+
+```bash
+docker run -p 8080:8080 ecommerce-backend
+```
+
+---
+
+# Production Notes
+
+* Never store database passwords in source code.
+* Use environment variables in production.
+* Set `spring.jpa.show-sql=false` for better performance.
+* Use HTTPS-enabled hosting platforms.
+* Keep database backups enabled.
+
+---
+
+# Project Structure
+
+```
+src/main/java/com/dhiraj
+│
+├── Config
+├── Controller
+├── Entity
+├── Exception
+├── Model
+├── Repository
+├── Services
+└── ECommerceApApplication.java
+```
+
+Architecture:
+
+```
+Controller
+    ↓
+Service
+    ↓
+Repository
+    ↓
+MySQL Database
+```
+
